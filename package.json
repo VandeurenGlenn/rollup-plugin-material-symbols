@@ -1,0 +1,34 @@
+{
+	"name": "rollup-plugin-material-symbols",
+	"version": "1.0.0",
+	"description": "",
+	"main": "rollup.config.js",
+	"type": "module",
+	"scripts": {
+		"build": "rollup -c",
+		"test": "cd test && rollup -c && cd ../"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"@rollup/plugin-typescript": "^11.1.2",
+		"@types/node": "^20.4.4",
+		"rollup": "^3.26.3",
+		"rollup-plugin-auto-exports": "^1.0.2",
+		"tslib": "^2.6.0"
+	},
+	"exports": {
+		".": {
+			"import": "./exports/material-symbols.js",
+			"types": "./exports/material-symbols.d.ts"
+		},
+		"./material-symbols.js": {
+			"import": "./exports/material-symbols.js",
+			"types": "./exports/material-symbols.d.ts"
+		}
+	},
+	"dependencies": {
+		"globby": "^13.2.2"
+	}
+}
