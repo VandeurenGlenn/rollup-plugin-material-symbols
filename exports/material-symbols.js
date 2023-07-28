@@ -134,11 +134,10 @@ const getSymbols = (content) => {
     return matches?.map(match => match.replace('@symbol-', '')) || [];
 };
 
+const includedSymbols = {};
+const symbols = [];
 const materialSymbolsSvg = async (options) => {
     options = { ...baseOptions, ...options };
-    const includedSymbols = {};
-    const symbols = [];
-    const codepoints = {};
     const variant = options.variant.toLowerCase();
     const shouldCopy = Boolean(options.copyHTML);
     const shouldInclude = Boolean(options.includeHTML);
@@ -165,9 +164,6 @@ const materialSymbolsSvg = async (options) => {
         },
         transform,
         writeBundle: async (bundleOptions, bundle) => {
-            for (const symbol of symbols) {
-                includedSymbols[symbol] = codepoints[symbol];
-            }
             if (shouldCopy) {
                 const copyHTML = options.copyHTML === true ? `${inputDir}/**/*.html` : options.copyHTML;
                 const glob = globbySync(copyHTML);

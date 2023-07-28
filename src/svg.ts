@@ -9,12 +9,12 @@ import { env } from 'process'
 let _codepoints
 let _fetchedVariant
 
-
+const includedSymbols = {}
+  const symbols = []
 const materialSymbolsSvg = async (options: MaterialSymbolsSvgOptions) => {
   options = {...baseOptions, ...options}
   
-  const includedSymbols = {}
-  const symbols = []
+  
   const codepoints = {}
   
   const variant = options.variant.toLowerCase()
@@ -46,9 +46,6 @@ const materialSymbolsSvg = async (options: MaterialSymbolsSvgOptions) => {
     },
     transform,
     writeBundle: async (bundleOptions, bundle) => {
-      for (const symbol of symbols) {
-        includedSymbols[symbol] = codepoints[symbol]
-      }
       if (shouldCopy) {
         const copyHTML = options.copyHTML === true ? `${inputDir}/**/*.html` : options.copyHTML
         const glob = globbySync(copyHTML as string)
