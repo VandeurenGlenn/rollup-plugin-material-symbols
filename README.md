@@ -1,6 +1,14 @@
 # rollup-plugin-material-symbols
 > It's a saying that material icon/symbol font is slow, this resolves that.
 
+## why?
+### font
+![lighthouse result](./assets/result-font.png)
+![lighthouse slow font](./assets/font-slow.png)
+
+### svg (inline...)
+![lighthouse result](./assets/result-svg.png)
+
 ## install
 ```sh
 npm i -D rollup-plugin-material-symbols
@@ -102,11 +110,3 @@ export default {
   ]
 }
 ```
-
-## why?
-### font
-![lighthouse result](./assets/result-font.png)
-![lighthouse slow font](./assets/font-slow.png)
-
-### svg (inline...)
-![lighthouse result](./assets/result-svg.png)
