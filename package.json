@@ -14,6 +14,7 @@
 	"devDependencies": {
 		"@rollup/plugin-typescript": "^11.1.2",
 		"@types/node": "^20.4.4",
+		"lighthouse": "^10.4.0",
 		"rollup": "^3.26.3",
 		"rollup-plugin-auto-exports": "^1.0.2",
 		"tslib": "^2.6.0"
@@ -23,12 +24,33 @@
 			"import": "./exports/material-symbols.js",
 			"types": "./exports/material-symbols.d.ts"
 		},
+		"./constants.js": {
+			"import": "./exports/constants.js",
+			"types": "./exports/lib/constants.d.ts"
+		},
+		"./font.js": {
+			"import": "./exports/font.js",
+			"types": "./exports/lib/helpers/font.d.ts"
+		},
+		"./helpers.js": {
+			"import": "./exports/helpers.js",
+			"types": "./exports/lib/helpers.d.ts"
+		},
 		"./material-symbols.js": {
 			"import": "./exports/material-symbols.js",
 			"types": "./exports/material-symbols.d.ts"
+		},
+		"./svg.js": {
+			"import": "./exports/svg.js",
+			"types": "./exports/lib/helpers/svg.d.ts"
+		},
+		"./types.js": {
+			"import": "./exports/types.js",
+			"types": "./exports/lib/types.d.ts"
 		}
 	},
 	"dependencies": {
+		"@material-symbols/svg-400": "^0.10.2",
 		"globby": "^13.2.2"
 	}
 }
