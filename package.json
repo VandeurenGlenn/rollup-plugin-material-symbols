@@ -1,6 +1,6 @@
 {
 	"name": "rollup-plugin-material-symbols",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"main": "rollup.config.js",
 	"type": "module",
