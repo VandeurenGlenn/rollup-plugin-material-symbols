@@ -142,7 +142,7 @@ const materialSymbolsSvg = async (options) => {
     const variant = options.variant.toLowerCase();
     const shouldCopy = Boolean(options.copyHTML);
     const shouldInclude = Boolean(options.includeHTML);
-    const root = `${env.npm_package_json.replace('package.json', '')}node_modules/@material-symbols/svg-400/${variant}`;
+    const root = `${env.npm_config_local_prefix}/node_modules/@material-symbols/svg-400/${variant}`;
     const createPath = (root, symbol, fill) => {
         return join(root, `${fill === 1 ? `${symbol}-fill` : symbol}.svg`);
     };
