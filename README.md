@@ -1,5 +1,12 @@
-# rollup-plugin-material-symbols
-> It's a saying that material icon/symbol font is slow, this resolves that.
+<div align="center">
+<img src="./logo.png" width="300">
+
+#### Inline `<md-icon>` at build time.
+</div>
+
+# Toodoo
+
+
 
 ## why?
 ### font
