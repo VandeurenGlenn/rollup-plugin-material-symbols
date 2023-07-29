@@ -1,18 +1,16 @@
 {
-	"compilerOptions": {
-		"module": "ESNext",
-		"target": "ES2022",
-		"moduleResolution": "nodenext",
-		"moduleDetection": "auto",
-		"esModuleInterop": true,
-		"outDir": "exports",
-		"declaration": true,
-		"allowSyntheticDefaultImports": true,
-		"experimentalDecorators": true,
-		"useDefineForClassFields": false,
-		"resolveJsonModule": true
-	},
-	"include": [
-		"./**/*"
-, ".vscode/elements.ts"	]
+  "compilerOptions": {
+    "module": "ES2022",
+    "target": "ES2022",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "outDir": "lib",
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "resolveJsonModule": true,
+    "rootDir": "src"
+  },
+  "include": ["src/**/*"]
 }

@@ -1,4 +1,4 @@
-import {BaseOptions, StylingOptions} from './types.js';
+import type {BaseOptions, StylingOptions} from './types.js';
 
 export const baseStylingOptions: StylingOptions = {
   size: 48,

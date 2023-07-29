@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "build": "rollup -c",
+    "build": "tsc --pretty",
     "test": "cd test && rollup -c && cd ../",
     "prepare": "husky install"
   },
@@ -16,9 +16,9 @@
     "@rollup/plugin-typescript": "^11.1.2",
     "@types/node": "^20.4.4",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
     "rollup": "^3.26.3",
-    "rollup-plugin-auto-exports": "^1.0.2",
     "tslib": "^2.6.0"
   },
   "exports": {
