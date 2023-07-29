@@ -119,7 +119,7 @@ const materialSymbolsSvg = async (options: MaterialSymbolsOptions) => {
               let code = (
                 await readFile(path.replace(inputDir, bundleOptions.dir))
               ).toString();
-              code = await transform(code, options);
+              code = await transform(code);
               writeFile(path.replace(inputDir, bundleOptions.dir), code);
             }),
           );
@@ -138,7 +138,7 @@ const materialSymbolsSvg = async (options: MaterialSymbolsOptions) => {
             let code = (
               await readFile(path.replace(inputDir, bundleOptions.dir))
             ).toString();
-            code = await transform(code, options);
+            code = await transform(code);
             writeFile(path.replace(inputDir, bundleOptions.dir), code);
           }),
         );
