@@ -23,20 +23,20 @@
   },
   "exports": {
     ".": {
-      "import": "./exports/material-symbols.js",
-      "types": "./exports/material-symbols.d.ts"
+      "import": "./lib/material-symbols.js",
+      "types": "./lib/material-symbols.d.ts"
     },
     "./constants.js": {
-      "import": "./exports/constants.js",
-      "types": "./exports/constants.d.ts"
+      "import": "./lib/constants.js",
+      "types": "./lib/constants.d.ts"
     },
     "./material-symbols.js": {
-      "import": "./exports/material-symbols.js",
-      "types": "./exports/material-symbols.d.ts"
+      "import": "./lib/material-symbols.js",
+      "types": "./lib/material-symbols.d.ts"
     },
     "./types.js": {
-      "import": "./exports/types.js",
-      "types": "./exports/types.d.ts"
+      "import": "./lib/types.js",
+      "types": "./lib/types.d.ts"
     }
   },
   "dependencies": {
@@ -46,6 +46,6 @@
     "**/*.{cjs,html,js,json,md,ts}": "prettier --single-quote --no-bracket-spacing --write"
   },
   "files": [
-    "exports"
+    "lib"
   ]
 }
