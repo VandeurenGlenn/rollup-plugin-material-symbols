@@ -56,5 +56,8 @@
   },
   "lint-staged": {
     "**/*.{cjs,html,js,json,md,ts}": "prettier --single-quote --no-bracket-spacing --write"
-  }
+  },
+  "files": [
+    "exports"
+  ]
 }
