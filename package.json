@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-material-symbols",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "",
   "type": "module",
   "scripts": {
@@ -56,5 +56,8 @@
   },
   "lint-staged": {
     "**/*.{cjs,html,js,json,md,ts}": "prettier --single-quote --no-bracket-spacing --write"
-  }
+  },
+  "files": [
+    "exports"
+  ]
 }
