@@ -17,9 +17,10 @@ const baseOptions = {
     styling: baseStylingOptions
 };
 
+const createTagNameRegex = (tagName) => new RegExp(`(?:\\@${tagName}\\-)([aA-zZ]+)`, 'g');
 const injectSymbols = (content, symbols, options) => {
     if (options.tagName) {
-        const regex = new RegExp(`(?:\\@${options.tagName}\\-)([aA-zZ]+)`, 'g');
+        const regex = createTagNameRegex(options.tagName);
         content = content.replaceAll(regex, (_, $1) => symbols[$1]);
     }
     if (options.elements) {
@@ -30,9 +31,23 @@ const injectSymbols = (content, symbols, options) => {
     }
     return content;
 };
-const getSymbols = (content) => {
-    const matches = content.match(/(?:\@symbol\-)([aA-zZ]+)/g);
-    return matches?.map(match => match.replace('@symbol-', '')) || [];
+const getSymbols = (content, options) => {
+    let matches = [];
+    if (options.tagName) {
+        const regex = new RegExp(`(?:\\@${options.tagName}\\-)([aA-zZ]+)`, 'g');
+        const _matches = content.match(regex)?.map(match => match.replace(`@${options.tagName}-`, '')) || [];
+        if (_matches?.length > 0)
+            matches = _matches;
+    }
+    if (options.elements) {
+        for (const element of options.elements) {
+            const regex = new RegExp(`(?!\\<${element}\\>)([aA-zZ]+)(?=\\<\\/${element}\\>)`, 'g');
+            const _matches = content.match(regex);
+            if (_matches?.length > 0)
+                matches = [..._matches, ...matches];
+        }
+    }
+    return matches;
 };
 const includedSymbols = {};
 const symbols = [];
@@ -54,7 +69,7 @@ const materialSymbolsSvg = async (options) => {
     }
     let inputDir;
     const transform = async (code, options) => {
-        for (const symbol of getSymbols(code)) {
+        for (const symbol of getSymbols(code, options)) {
             if (!symbols.includes(symbol)) {
                 symbols.push(symbol);
                 includedSymbols[symbol] = await readFile(createPath(root, symbol, options.styling.fill));
