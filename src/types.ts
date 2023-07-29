@@ -6,10 +6,10 @@ type CreateArrayFromNumber<
     : CreateArrayFromNumber<N, [...Result,1]>
 
 type NumericRange<
-   A extends number[], 
-   E extends number, 
+   A extends number[],
+   E extends number,
    Result extends number=never
-> = A['length'] extends E 
+> = A['length'] extends E
    ? Result | E
    : NumericRange<[...A,1], E, Result | A['length']>
 
@@ -21,7 +21,7 @@ export declare type MaterialSymbolsOptions = {
   variant?: MaterialSymbolsVariant
   includeHTML?: boolean | string | string[]
   copyHTML?: boolean | string | string[]
-  styling?: StylingOptions,
+  styling?: Partial<StylingOptions>,
   tagName?: string,
   // array of elements you want the innerhtml replaced by the svg
   elements: string[]

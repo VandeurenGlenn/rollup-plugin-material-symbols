@@ -1,10 +1,10 @@
 import { BaseOptions, MaterialSymbolsVariant, StylingOptions } from "./types.js"
 
-export const variants: MaterialSymbolsVariant[] = [
-  'outlined',
-  'rounded',
-  'sharp'
-]
+// export const variants: MaterialSymbolsVariant[] = [
+//   'outlined',
+//   'rounded',
+//   'sharp'
+// ]
 
 export const baseStylingOptions: StylingOptions = {
   size: 48,
