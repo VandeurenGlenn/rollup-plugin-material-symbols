@@ -7,6 +7,9 @@ export default [{
     format: 'es'
   }],
   plugins: [
-    materialSymbols()
+    materialSymbols({
+      tagName: 'symbol',
+      elements: ['md-icon', 'custom-icon']
+    })
   ]
 }]

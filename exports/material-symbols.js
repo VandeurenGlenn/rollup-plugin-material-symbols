@@ -17,9 +17,18 @@ const baseOptions = {
     styling: baseStylingOptions
 };
 
-const injectSymbols = (content, symbols) => {
-    content.replaceAll(/(?:\@symbol\-)([aA-zZ]+)/g, (_, $1) => symbols[$1]);
-    return content.replaceAll(/(?!\<md-icon\>)([aA-zZ]+)(?=\<\/md-icon\>)/g, (_, $1) => symbols[$1]);
+const injectSymbols = (content, symbols, options) => {
+    if (options.tagName) {
+        const regex = new RegExp(`(?:\\@${options.tagName}\\-)([aA-zZ]+)`, 'g');
+        content = content.replaceAll(regex, (_, $1) => symbols[$1]);
+    }
+    if (options.elements) {
+        for (const element of options.elements) {
+            const regex = new RegExp(`(?!\\<${element}\\>)([aA-zZ]+)(?=\\<\\/${element}\\>)`, 'g');
+            content = content.replaceAll(regex, (_, $1) => symbols[$1]);
+        }
+    }
+    return content;
 };
 const getSymbols = (content) => {
     const matches = content.match(/(?:\@symbol\-)([aA-zZ]+)/g);
@@ -44,14 +53,14 @@ const materialSymbolsSvg = async (options) => {
     note: you need to manually import`);
     }
     let inputDir;
-    const transform = async (code) => {
+    const transform = async (code, options) => {
         for (const symbol of getSymbols(code)) {
             if (!symbols.includes(symbol)) {
                 symbols.push(symbol);
                 includedSymbols[symbol] = await readFile(createPath(root, symbol, options.styling.fill));
             }
         }
-        return injectSymbols(code, includedSymbols);
+        return injectSymbols(code, includedSymbols, options);
     };
     return {
         name: 'materialSymbols',
@@ -69,7 +78,7 @@ const materialSymbolsSvg = async (options) => {
                 if (shouldInclude) {
                     await Promise.all(glob.map(async (path) => {
                         let code = (await readFile(path.replace(inputDir, bundleOptions.dir))).toString();
-                        code = await transform(code);
+                        code = await transform(code, options);
                         writeFile(path.replace(inputDir, bundleOptions.dir), code);
                     }));
                 }
@@ -80,7 +89,7 @@ const materialSymbolsSvg = async (options) => {
                 const glob = globbySync(includeHTML);
                 await Promise.all(glob.map(async (path) => {
                     let code = (await readFile(path.replace(inputDir, bundleOptions.dir))).toString();
-                    code = await transform(code);
+                    code = await transform(code, options);
                     writeFile(path.replace(inputDir, bundleOptions.dir), code);
                 }));
             }

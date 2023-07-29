@@ -7,6 +7,8 @@ export declare type MaterialSymbolsOptions = {
     includeHTML?: boolean | string | string[];
     copyHTML?: boolean | string | string[];
     styling?: StylingOptions;
+    tagName?: string;
+    elements: string[];
 };
 export declare type StylingOptions = {
     size: TwentyToFortyEight;

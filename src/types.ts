@@ -21,7 +21,10 @@ export declare type MaterialSymbolsOptions = {
   variant?: MaterialSymbolsVariant
   includeHTML?: boolean | string | string[]
   copyHTML?: boolean | string | string[]
-  styling?: StylingOptions
+  styling?: StylingOptions,
+  tagName?: string,
+  // array of elements you want the innerhtml replaced by the svg
+  elements: string[]
 }
 
 export declare type StylingOptions = {
