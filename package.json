@@ -51,6 +51,7 @@
 	},
 	"dependencies": {
 		"@material-symbols/svg-400": "^0.10.2",
+		"@material-symbols/svg-700": "^0.10.2",
 		"globby": "^13.2.2"
 	}
 }

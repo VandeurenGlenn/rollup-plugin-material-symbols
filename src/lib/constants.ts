@@ -27,6 +27,3 @@ export const baseSvgOptions: BaseOptions = {
   copyHTML: undefined,
   styling: baseStylingOptions
 }
-
-export const GH_BASE_URL = 'https://raw.githubusercontent.com/google/material-design-icons/master/variablefont/'
-export const FONTS_BASE_URL = 'https://fonts.googleapis.com/css2?family=Material+Symbols+'
