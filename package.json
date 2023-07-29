@@ -3,6 +3,9 @@
   "version": "2.0.8",
   "description": "",
   "type": "module",
+  "main": "lib/material-symbols.js",
+  "module": "lib/material-symbols.js",
+  "types": "lib/material-symbols.d.ts",
   "scripts": {
     "build": "tsc --pretty",
     "test": "cd test && rollup -c && cd ../",
@@ -24,18 +27,22 @@
   "exports": {
     ".": {
       "import": "./lib/material-symbols.js",
+      "default": "./lib/material-symbols.js",
       "types": "./lib/material-symbols.d.ts"
     },
     "./constants.js": {
       "import": "./lib/constants.js",
+      "default": "./lib/constants.js",
       "types": "./lib/constants.d.ts"
     },
     "./material-symbols.js": {
       "import": "./lib/material-symbols.js",
+      "default": "./lib/material-symbols.js",
       "types": "./lib/material-symbols.d.ts"
     },
     "./types.js": {
       "import": "./lib/types.js",
+      "default": "./lib/types.js",
       "types": "./lib/types.d.ts"
     }
   },
