@@ -1,4 +1,10 @@
-import materialSymbolsfont from './font.js';
-import materialSymbolsSvg from './svg.js';
-import { variants } from './lib/constants.js';
-export { materialSymbolsSvg, materialSymbolsfont, variants };
+import { MaterialSymbolsOptions } from './types.js';
+declare const materialSymbolsSvg: (options: MaterialSymbolsOptions) => Promise<{
+    name: string;
+    buildStart: (options: any) => void;
+    transform: (code: string) => Promise<any>;
+    onLog(level: any, log: any): any;
+    writeBundle: (bundleOptions: any, bundle: any) => Promise<void>;
+}>;
+export { materialSymbolsSvg };
+export default materialSymbolsSvg;

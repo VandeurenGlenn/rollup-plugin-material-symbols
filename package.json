@@ -14,7 +14,6 @@
 	"devDependencies": {
 		"@rollup/plugin-typescript": "^11.1.2",
 		"@types/node": "^20.4.4",
-		"lighthouse": "^10.4.0",
 		"rollup": "^3.26.3",
 		"rollup-plugin-auto-exports": "^1.0.2",
 		"tslib": "^2.6.0"
@@ -50,7 +49,6 @@
 		}
 	},
 	"dependencies": {
-		"@material-symbols/svg-400": "^0.10.2",
 		"@material-symbols/svg-700": "^0.10.2",
 		"globby": "^13.2.2"
 	}

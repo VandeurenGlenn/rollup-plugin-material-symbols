@@ -7,6 +7,8 @@ export default [{
     format: 'es'
   }],
   plugins: [
-    materialSymbols()
+    materialSymbols({
+      styling: {weight: 700}
+    })
   ]
 }]
