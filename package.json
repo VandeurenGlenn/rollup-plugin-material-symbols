@@ -12,6 +12,7 @@
 	"author": "",
 	"license": "MIT",
 	"devDependencies": {
+		"@material-symbols/svg-400": "^0.10.2",
 		"@rollup/plugin-typescript": "^11.1.2",
 		"@types/node": "^20.4.4",
 		"rollup": "^3.26.3",
@@ -49,7 +50,6 @@
 		}
 	},
 	"dependencies": {
-		"@material-symbols/svg-700": "^0.10.2",
 		"globby": "^13.2.2"
 	}
 }

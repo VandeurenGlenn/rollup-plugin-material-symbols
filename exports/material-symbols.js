@@ -61,11 +61,6 @@ const materialSymbolsSvg = async (options) => {
                 inputDir = parse(input).dir;
         },
         transform,
-        onLog(level, log) {
-            if (level === 'warn' && log.code === 'THIS_IS_NOT_OK') {
-                return this.error(log);
-            }
-        },
         writeBundle: async (bundleOptions, bundle) => {
             if (shouldCopy) {
                 const copyHTML = options.copyHTML === true ? `${inputDir}/**/*.html` : options.copyHTML;

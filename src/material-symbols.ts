@@ -1,6 +1,6 @@
 import {constants, cp, readFile, writeFile} from 'fs/promises'
 import { join, parse } from 'path'
-import { GlobbyFilterFunction, globby, globbySync } from 'globby'
+import { globbySync } from 'globby'
 import { MaterialSymbolsOptions } from './types.js'
 import { baseOptions } from './constants.js'
 import { env } from 'process'
@@ -62,11 +62,6 @@ const materialSymbolsSvg = async (options: MaterialSymbolsOptions) => {
       if (shouldCopy) inputDir = parse(input).dir
     },
     transform,
-    onLog(level, log) {
-			if (level === 'warn' && log.code === 'THIS_IS_NOT_OK') {
-				return this.error(log);
-			}
-		},
     writeBundle: async (bundleOptions, bundle) => {
       if (shouldCopy) {
         const copyHTML = options.copyHTML === true ? `${inputDir}/**/*.html` : options.copyHTML
