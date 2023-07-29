@@ -1,8 +1,8 @@
 import {constants, cp, readFile, writeFile} from 'fs/promises';
 import {join, parse} from 'path';
 import {globbySync} from 'globby';
-import {MaterialSymbolsOptions} from './types.js';
-import {baseOptions} from './constants.js';
+import type {MaterialSymbolsOptions} from './types.js';
+import {baseOptions} from './defaults.js';
 import {env} from 'process';
 import {accessSync} from 'fs';
 
