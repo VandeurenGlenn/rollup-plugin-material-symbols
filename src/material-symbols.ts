@@ -78,7 +78,7 @@ const materialSymbolsSvg = async (options: MaterialSymbolsOptions) => {
 
   let inputDir: string;
 
-  const transform = async (code: string, options) => {
+  const transform = async (code: string) => {
     for (const symbol of getSymbols(code, options)) {
       if (!symbols.includes(symbol)) {
         symbols.push(symbol);
