@@ -1,54 +1,60 @@
 {
-	"name": "rollup-plugin-material-symbols",
-	"version": "2.0.2",
-	"description": "",
-	"type": "module",
-	"scripts": {
-		"build": "rollup -c",
-		"test": "cd test && rollup -c && cd ../"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "MIT",
-	"devDependencies": {
-		"@material-symbols/svg-400": "^0.10.2",
-		"@rollup/plugin-typescript": "^11.1.2",
-		"@types/node": "^20.4.4",
-		"rollup": "^3.26.3",
-		"rollup-plugin-auto-exports": "^1.0.2",
-		"tslib": "^2.6.0"
-	},
-	"exports": {
-		".": {
-			"import": "./exports/material-symbols.js",
-			"types": "./exports/material-symbols.d.ts"
-		},
-		"./constants.js": {
-			"import": "./exports/constants.js",
-			"types": "./exports/lib/constants.d.ts"
-		},
-		"./font.js": {
-			"import": "./exports/font.js",
-			"types": "./exports/lib/helpers/font.d.ts"
-		},
-		"./helpers.js": {
-			"import": "./exports/helpers.js",
-			"types": "./exports/lib/helpers.d.ts"
-		},
-		"./material-symbols.js": {
-			"import": "./exports/material-symbols.js",
-			"types": "./exports/material-symbols.d.ts"
-		},
-		"./svg.js": {
-			"import": "./exports/svg.js",
-			"types": "./exports/lib/helpers/svg.d.ts"
-		},
-		"./types.js": {
-			"import": "./exports/types.js",
-			"types": "./exports/lib/types.d.ts"
-		}
-	},
-	"dependencies": {
-		"globby": "^13.2.2"
-	}
+  "name": "rollup-plugin-material-symbols",
+  "version": "2.0.2",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "cd test && rollup -c && cd ../",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@material-symbols/svg-400": "^0.10.2",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/node": "^20.4.4",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.0",
+    "rollup": "^3.26.3",
+    "rollup-plugin-auto-exports": "^1.0.2",
+    "tslib": "^2.6.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./exports/material-symbols.js",
+      "types": "./exports/material-symbols.d.ts"
+    },
+    "./constants.js": {
+      "import": "./exports/constants.js",
+      "types": "./exports/lib/constants.d.ts"
+    },
+    "./font.js": {
+      "import": "./exports/font.js",
+      "types": "./exports/lib/helpers/font.d.ts"
+    },
+    "./helpers.js": {
+      "import": "./exports/helpers.js",
+      "types": "./exports/lib/helpers.d.ts"
+    },
+    "./material-symbols.js": {
+      "import": "./exports/material-symbols.js",
+      "types": "./exports/material-symbols.d.ts"
+    },
+    "./svg.js": {
+      "import": "./exports/svg.js",
+      "types": "./exports/lib/helpers/svg.d.ts"
+    },
+    "./types.js": {
+      "import": "./exports/types.js",
+      "types": "./exports/lib/types.d.ts"
+    }
+  },
+  "dependencies": {
+    "globby": "^13.2.2"
+  },
+  "lint-staged": {
+    "**/*.{cjs,html,js,json,md,ts}": "prettier --single-quote --no-bracket-spacing --write"
+  }
 }
