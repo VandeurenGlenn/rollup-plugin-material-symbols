@@ -1,4 +1,4 @@
-import type {BaseOptions, StylingOptions} from './types.js';
+import type {MaterialSymbolsOptions, StylingOptions} from './types.js';
 
 export const baseStylingOptions: StylingOptions = {
   size: 48,
@@ -7,7 +7,7 @@ export const baseStylingOptions: StylingOptions = {
   GRAD: 0,
 };
 
-export const baseOptions: BaseOptions = {
+export const baseOptions: Omit<MaterialSymbolsOptions, 'elements'> = {
   variant: 'outlined',
   include: ['**/*.js'],
   exclude: [],

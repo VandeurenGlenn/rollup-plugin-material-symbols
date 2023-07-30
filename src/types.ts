@@ -18,10 +18,10 @@ export declare type TwentyToFortyEight = NumericRange<
   49
 >;
 
-export declare type MaterialSymbolsVariant = 'outlined' | 'rounded' | 'sharp';
+// export declare type MaterialSymbolsVariant = 'outlined' | 'rounded' | 'sharp';
 
 export declare type MaterialSymbolsOptions = {
-  variant?: MaterialSymbolsVariant;
+  variant?: 'outlined' | 'rounded' | 'sharp';
   styling?: Partial<StylingOptions>;
   tagName?: string;
   include: string[];
@@ -35,11 +35,4 @@ export declare type StylingOptions = {
   weight: 100 | 200 | 300 | 400 | 500 | 600 | 700;
   fill: 0 | 1;
   GRAD: -25 | 0 | 200;
-};
-
-export declare type BaseOptions = {
-  include: string | string[];
-  exclude: string | string[];
-  variant: MaterialSymbolsVariant;
-  styling: StylingOptions;
 };
