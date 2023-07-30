@@ -18,15 +18,36 @@ export declare type TwentyToFortyEight = NumericRange<
   49
 >;
 
-// export declare type MaterialSymbolsVariant = 'outlined' | 'rounded' | 'sharp';
-
 export declare type MaterialSymbolsOptions = {
+  /**
+   * Variant of the symbol icons.
+   */
   variant?: 'outlined' | 'rounded' | 'sharp';
+  /**
+   * Styles of the symbol icons.
+   */
   styling?: Partial<StylingOptions>;
+  /**
+   * Maybe we could remove that? and force a name instead.
+   */
   tagName?: string;
+  /**
+   * Files to replace inline icons in.
+   * Defaults to ['*\*\/*.js']
+   */
   include: string[];
+  /**
+   * Files to replace inline icons in.
+   *
+   * @default []
+   */
   exclude: string[];
-  // array of elements you want the innerhtml replaced by the svg
+  /**
+   * The elements to allow inlining icons in.
+   * E.g. `<md-icon>`
+   *
+   * @default []
+   */
   elements: string[];
 };
 
