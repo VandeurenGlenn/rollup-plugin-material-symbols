@@ -20,10 +20,6 @@ export declare type TwentyToFortyEight = NumericRange<
 
 export declare type MaterialSymbolsOptions = {
   /**
-   * Variant of the symbol icons.
-   */
-  variant: 'outlined' | 'rounded' | 'sharp';
-  /**
    * Styles of the symbol icons.
    */
   styling: Partial<StylingOptions>;
@@ -57,8 +53,12 @@ export declare type MaterialSymbolsOptions = {
 };
 
 export declare type StylingOptions = {
+  /**
+   * Variant of the symbol icons.
+   */
+  variant: 'outlined' | 'rounded' | 'sharp';
   size: TwentyToFortyEight;
   weight: 100 | 200 | 300 | 400 | 500 | 600 | 700;
   fill: 0 | 1;
-  GRAD: -25 | 0 | 200;
+  grade: -25 | 0 | 200;
 };

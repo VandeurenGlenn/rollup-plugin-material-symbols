@@ -67,7 +67,7 @@ const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
 
   const filter = createFilter(options.include, options.exclude);
 
-  const variant = options.variant.toLowerCase();
+  const variant = options.styling.variant.toLowerCase();
 
   const root = `${env.npm_config_local_prefix}/node_modules/@material-symbols/svg-${options.styling.weight}`;
 
