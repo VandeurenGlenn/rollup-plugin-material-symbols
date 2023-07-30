@@ -20,31 +20,32 @@ export declare type TwentyToFortyEight = NumericRange<
 
 export declare type MaterialSymbolsOptions = {
   /**
-   * Variant of the symbol icons.
-   */
-  variant?: 'outlined' | 'rounded' | 'sharp';
-  /**
    * Styles of the symbol icons.
    */
-  styling?: Partial<StylingOptions>;
+  styling: Partial<StylingOptions>;
   /**
-   * Maybe we could remove that? and force a name instead.
+   * Placeholders let you inline symbols when the prefix
+   * is encounter.
+   * For instance `@md_symbol_info` in your html will be replaced
+   * by the inlined svg "info" symbol.
+   *
+   * @default '@md_symbol_'
    */
-  tagName?: string;
+  placeholderPrefix: string;
   /**
    * Files to replace inline icons in.
    * Defaults to ['*\*\/*.js']
    */
   include: string[];
   /**
-   * Files to replace inline icons in.
+   * Files to exclude.
    *
    * @default []
    */
   exclude: string[];
   /**
    * The elements to allow inlining icons in.
-   * E.g. `<md-icon>`
+   * E.g. `md-icon`
    *
    * @default []
    */
@@ -52,8 +53,12 @@ export declare type MaterialSymbolsOptions = {
 };
 
 export declare type StylingOptions = {
+  /**
+   * Variant of the symbol icons.
+   */
+  variant: 'outlined' | 'rounded' | 'sharp';
   size: TwentyToFortyEight;
   weight: 100 | 200 | 300 | 400 | 500 | 600 | 700;
   fill: 0 | 1;
-  GRAD: -25 | 0 | 200;
+  grade: -25 | 0 | 200;
 };

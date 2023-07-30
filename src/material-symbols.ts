@@ -10,9 +10,13 @@ import type {Plugin} from 'rollup';
 const createTagNameRegex = (tagName: string) =>
   new RegExp(`(?:\\@${tagName}\\-)([aA-zZ]+)`, 'g');
 
-const injectSymbols = (content: string, symbols, options) => {
-  if (options.tagName) {
-    const regex = createTagNameRegex(options.tagName);
+const injectSymbols = (
+  content: string,
+  symbols,
+  options: MaterialSymbolsOptions,
+) => {
+  if (options.placeholderPrefix) {
+    const regex = createTagNameRegex(options.placeholderPrefix);
     content = content.replaceAll(regex, (_, $1) => symbols[$1]);
   }
 
@@ -30,12 +34,16 @@ const injectSymbols = (content: string, symbols, options) => {
 
 const getSymbols = (content: string, options: MaterialSymbolsOptions) => {
   let matches = [];
-  if (options.tagName) {
-    const regex = new RegExp(`(?:\\@${options.tagName}\\-)([aA-zZ]+)`, 'g');
+  if (options.placeholderPrefix) {
+    const regex = new RegExp(
+      `(?:\\@${options.placeholderPrefix}\\-)([aA-zZ]+)`,
+      'g',
+    );
     const _matches =
       content
         .match(regex)
-        ?.map((match) => match.replace(`@${options.tagName}-`, '')) || [];
+        ?.map((match) => match.replace(`@${options.placeholderPrefix}-`, '')) ||
+      [];
     if (_matches?.length > 0) matches = _matches;
   }
   if (options.elements) {
@@ -59,7 +67,7 @@ const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
 
   const filter = createFilter(options.include, options.exclude);
 
-  const variant = options.variant.toLowerCase();
+  const variant = options.styling.variant.toLowerCase();
 
   const root = `${env.npm_config_local_prefix}/node_modules/@material-symbols/svg-${options.styling.weight}`;
 
