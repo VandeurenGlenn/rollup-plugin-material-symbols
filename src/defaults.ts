@@ -7,7 +7,7 @@ export const baseStylingOptions: StylingOptions = {
   GRAD: 0,
 };
 
-export const baseOptions: Omit<MaterialSymbolsOptions, 'elements'> = {
+export const baseOptions: Partial<MaterialSymbolsOptions> = {
   variant: 'outlined',
   include: ['**/*.js'],
   exclude: [],
