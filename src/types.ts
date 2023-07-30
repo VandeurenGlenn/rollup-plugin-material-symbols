@@ -33,7 +33,7 @@ export declare type MaterialSymbolsOptions = {
    * For instance `@md_symbol_info` in your html will be replaced
    * by the inlined svg "info" symbol.
    *
-   * @default '@md_symbol'
+   * @default '@md_symbol_'
    */
   placeholderPrefix: string;
   /**

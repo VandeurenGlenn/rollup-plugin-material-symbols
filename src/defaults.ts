@@ -12,4 +12,5 @@ export const baseOptions: Partial<MaterialSymbolsOptions> = {
   include: ['**/*.js'],
   exclude: [],
   styling: baseStylingOptions,
+  placeholderPrefix: '@md_symbol_',
 };
