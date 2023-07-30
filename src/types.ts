@@ -22,29 +22,34 @@ export declare type MaterialSymbolsOptions = {
   /**
    * Variant of the symbol icons.
    */
-  variant?: 'outlined' | 'rounded' | 'sharp';
+  variant: 'outlined' | 'rounded' | 'sharp';
   /**
    * Styles of the symbol icons.
    */
-  styling?: Partial<StylingOptions>;
+  styling: Partial<StylingOptions>;
   /**
-   * Maybe we could remove that? and force a name instead.
+   * Placeholders let you inline symbols when the prefix
+   * is encounter.
+   * For instance `@md_symbol_info` in your html will be replaced
+   * by the inlined svg "info" symbol.
+   *
+   * @default '@md_symbol'
    */
-  tagName?: string;
+  placeholderPrefix: string;
   /**
    * Files to replace inline icons in.
    * Defaults to ['*\*\/*.js']
    */
   include: string[];
   /**
-   * Files to replace inline icons in.
+   * Files to exclude.
    *
    * @default []
    */
   exclude: string[];
   /**
    * The elements to allow inlining icons in.
-   * E.g. `<md-icon>`
+   * E.g. `md-icon`
    *
    * @default []
    */
