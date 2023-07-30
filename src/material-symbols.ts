@@ -91,10 +91,10 @@ const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
       if (!filter(id)) return;
       for (const symbol of getSymbols(code, options)) {
         if (!symbols.includes(symbol)) {
-          symbols.push(symbol);
           includedSymbols[symbol] = await readFile(
             createPath(root, symbol, options.styling.fill),
           );
+          symbols.push(symbol);
         }
       }
       return injectSymbols(code, includedSymbols, options);
