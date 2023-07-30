@@ -5,11 +5,12 @@ import {baseOptions} from './defaults.js';
 import {env} from 'process';
 import {accessSync} from 'fs';
 import {createFilter} from '@rollup/pluginutils';
+import type {Plugin} from 'rollup';
 
 const createTagNameRegex = (tagName: string) =>
   new RegExp(`(?:\\@${tagName}\\-)([aA-zZ]+)`, 'g');
 
-const injectSymbols = (content, symbols, options) => {
+const injectSymbols = (content: string, symbols, options) => {
   if (options.tagName) {
     const regex = createTagNameRegex(options.tagName);
     content = content.replaceAll(regex, (_, $1) => symbols[$1]);
@@ -27,7 +28,7 @@ const injectSymbols = (content, symbols, options) => {
   return content;
 };
 
-const getSymbols = (content, options) => {
+const getSymbols = (content: string, options: MaterialSymbolsOptions) => {
   let matches = [];
   if (options.tagName) {
     const regex = new RegExp(`(?:\\@${options.tagName}\\-)([aA-zZ]+)`, 'g');
@@ -53,7 +54,7 @@ const getSymbols = (content, options) => {
 const includedSymbols = {};
 const symbols = [];
 
-const materialSymbolsSvg = async (options: MaterialSymbolsOptions) => {
+const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
   options = {...baseOptions, ...options};
 
   const filter = createFilter(options.include, options.exclude);
