@@ -9,7 +9,7 @@ export const baseStylingOptions: StylingOptions = {
 
 export const baseOptions: BaseOptions = {
   variant: 'outlined',
-  includeHTML: true,
-  copyHTML: true,
+  includeHTML: false,
+  copyHTML: false,
   styling: baseStylingOptions,
 };
