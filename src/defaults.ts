@@ -9,7 +9,7 @@ export const baseStylingOptions: StylingOptions = {
 };
 
 export const baseOptions: Partial<MaterialSymbolsOptions> = {
-  include: ['**/*.js'],
+  include: ['**/*.{js,ts,html}'],
   exclude: [],
   styling: baseStylingOptions,
   placeholderPrefix: '@md_symbol_',
