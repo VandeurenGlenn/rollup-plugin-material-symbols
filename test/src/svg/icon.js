@@ -1,10 +1,12 @@
 class Icon extends HTMLElement {
   get iconTemplateContent() {
-    return document.querySelector(`template[name="${this.innerHTML || this.getAttribute('icon')}"]`).content
+    return document.querySelector(
+      `template[name="${this.innerHTML || this.getAttribute('icon')}"]`,
+    ).content;
   }
 
   get iconTemplateTextContent() {
-    return this.iconTemplateContent.cloneNode(true).children[0].outerHTML
+    return this.iconTemplateContent.cloneNode(true).children[0].outerHTML;
   }
 
   constructor() {
@@ -19,7 +21,10 @@ class Icon extends HTMLElement {
 
   render() {
     const html = (...strings) => {
-      return strings.reduce((set, value) => set += value.join ? value.join('') : value , '')
+      return strings.reduce(
+        (set, value) => (set += value.join ? value.join('') : value),
+        '',
+      );
     };
     return html`
       <style>
@@ -30,12 +35,12 @@ class Icon extends HTMLElement {
           width: var(--custom-icon-size);
         }
       </style>
-
+      <md-icon>home</md-icon>
       ${this.iconTemplateTextContent}
-    `
+    `;
   }
 }
 
 customElements.define('test-icon', Icon);
 
-export { Icon };
+export {Icon};

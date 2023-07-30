@@ -9,7 +9,7 @@ export const baseStylingOptions: StylingOptions = {
 
 export const baseOptions: BaseOptions = {
   variant: 'outlined',
-  includeHTML: false,
-  copyHTML: false,
+  include: ['**/*.js'],
+  exclude: [],
   styling: baseStylingOptions,
 };

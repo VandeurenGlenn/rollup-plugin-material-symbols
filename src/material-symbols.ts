@@ -1,10 +1,10 @@
-import {constants, cp, readFile, writeFile} from 'fs/promises';
-import {join, parse} from 'path';
-import {globbySync} from 'globby';
+import {constants, readFile} from 'fs/promises';
+import {join} from 'path';
 import type {MaterialSymbolsOptions} from './types.js';
 import {baseOptions} from './defaults.js';
 import {env} from 'process';
 import {accessSync} from 'fs';
+import {createFilter} from '@rollup/pluginutils';
 
 const createTagNameRegex = (tagName: string) =>
   new RegExp(`(?:\\@${tagName}\\-)([aA-zZ]+)`, 'g');
@@ -56,9 +56,9 @@ const symbols = [];
 const materialSymbolsSvg = async (options: MaterialSymbolsOptions) => {
   options = {...baseOptions, ...options};
 
+  const filter = createFilter(options.include, options.exclude);
+
   const variant = options.variant.toLowerCase();
-  const shouldCopy = Boolean(options.copyHTML);
-  const shouldInclude = Boolean(options.includeHTML);
 
   const root = `${env.npm_config_local_prefix}/node_modules/@material-symbols/svg-${options.styling.weight}`;
 
@@ -76,76 +76,23 @@ const materialSymbolsSvg = async (options: MaterialSymbolsOptions) => {
     note: you need to manually import`);
   }
 
-  let inputDir: string;
-
-  const transform = async (code: string) => {
-    for (const symbol of getSymbols(code, options)) {
-      if (!symbols.includes(symbol)) {
-        symbols.push(symbol);
-        includedSymbols[symbol] = await readFile(
-          createPath(root, symbol, options.styling.fill),
-        );
-      }
-    }
-    return injectSymbols(code, includedSymbols, options);
-  };
-
   return {
     name: 'materialSymbols',
-    buildStart: (options) => {
-      const input = Array.isArray(options.input)
-        ? options.input[0]
-        : options.input;
-      if (shouldCopy) inputDir = parse(input).dir;
-    },
-    transform,
-    writeBundle: async (bundleOptions, bundle) => {
-      if (shouldCopy) {
-        const copyHTML =
-          options.copyHTML === true
-            ? `${inputDir}/**/*.html`
-            : options.copyHTML;
-        const glob = globbySync(copyHTML as string);
-
-        await Promise.all(
-          glob.map((path) =>
-            cp(path, join(bundleOptions.dir, path.replace(inputDir, ''))),
-          ),
-        );
-
-        if (shouldInclude) {
-          await Promise.all(
-            glob.map(async (path) => {
-              let code = (
-                await readFile(path.replace(inputDir, bundleOptions.dir))
-              ).toString();
-              code = await transform(code);
-              writeFile(path.replace(inputDir, bundleOptions.dir), code);
-            }),
+    transform: async (code: string, id: string) => {
+      if (!filter(id)) return;
+      for (const symbol of getSymbols(code, options)) {
+        if (!symbols.includes(symbol)) {
+          symbols.push(symbol);
+          includedSymbols[symbol] = await readFile(
+            createPath(root, symbol, options.styling.fill),
           );
         }
       }
-      // also run trough html when not copying
-      if (!shouldCopy && shouldInclude) {
-        const includeHTML =
-          options.includeHTML === true
-            ? `${bundleOptions.dir}/**/*.html`
-            : options.includeHTML;
-        const glob = globbySync(includeHTML as string);
-
-        await Promise.all(
-          glob.map(async (path) => {
-            let code = (
-              await readFile(path.replace(inputDir, bundleOptions.dir))
-            ).toString();
-            code = await transform(code);
-            writeFile(path.replace(inputDir, bundleOptions.dir), code);
-          }),
-        );
-      }
+      return injectSymbols(code, includedSymbols, options);
     },
   };
 };
+
 export {materialSymbolsSvg};
 
 export default materialSymbolsSvg;

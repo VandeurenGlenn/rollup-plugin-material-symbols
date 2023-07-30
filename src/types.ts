@@ -22,10 +22,10 @@ export declare type MaterialSymbolsVariant = 'outlined' | 'rounded' | 'sharp';
 
 export declare type MaterialSymbolsOptions = {
   variant?: MaterialSymbolsVariant;
-  includeHTML?: boolean | string | string[];
-  copyHTML?: boolean | string | string[];
   styling?: Partial<StylingOptions>;
   tagName?: string;
+  include: string[];
+  exclude: string[];
   // array of elements you want the innerhtml replaced by the svg
   elements: string[];
 };
@@ -38,10 +38,8 @@ export declare type StylingOptions = {
 };
 
 export declare type BaseOptions = {
+  include: string | string[];
+  exclude: string | string[];
   variant: MaterialSymbolsVariant;
-  // goes trough all html files from defined bundle.output.dir or pass globpattern
-  includeHTML: boolean | string | string[];
-  // copy all html files from bundle.input.dir to bundle.output.dir or pass a globpattern
-  copyHTML: boolean | string | string[];
   styling: StylingOptions;
 };
