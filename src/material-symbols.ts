@@ -1,7 +1,7 @@
 import {constants, readFile} from 'fs/promises';
 import {join} from 'path';
 import type {MaterialSymbolsOptions} from './types.js';
-import {baseOptions} from './defaults.js';
+import {baseOptions, baseStylingOptions} from './defaults.js';
 import {env} from 'process';
 import {accessSync} from 'fs';
 import {createFilter} from '@rollup/pluginutils';
@@ -64,6 +64,7 @@ const symbols = [];
 
 const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
   options = {...baseOptions, ...options};
+  options.styling = {...baseStylingOptions, ...options.styling};
 
   const filter = createFilter(options.include, options.exclude);
 
@@ -81,8 +82,11 @@ const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
   try {
     accessSync(root, constants.R_OK);
   } catch {
-    throw new Error(`nothing found for @material-symbols/svg-${options.styling.weight}.
-    note: you need to manually import`);
+    throw new Error(
+      `\n` +
+        `@material-symbols/svg-${options.styling.weight} NOT FOUND\n` +
+        `You need to install this package in order to use 'rollup-plugin-md-icon'.\n`,
+    );
   }
 
   return {
