@@ -82,8 +82,11 @@ const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
   try {
     accessSync(root, constants.R_OK);
   } catch {
-    throw new Error(`nothing found for @material-symbols/svg-${options.styling.weight}.
-    note: you need to manually import`);
+    throw new Error(
+      `\n` +
+        `@material-symbols/svg-${options.styling.weight} NOT FOUND\n` +
+        `You need to install this package in order to use 'rollup-plugin-md-icon'.\n`,
+    );
   }
 
   return {
