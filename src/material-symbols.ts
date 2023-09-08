@@ -59,10 +59,9 @@ const getSymbols = (content: string, options: MaterialSymbolsOptions) => {
   return matches;
 };
 
-const includedSymbols = {};
-const symbols = [];
-
 const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
+  const includedSymbols = {};
+  const symbols = [];
   options = {...baseOptions, ...options};
   options.styling = {...baseStylingOptions, ...options.styling};
 

@@ -12,6 +12,9 @@ export default [
     plugins: [
       materialSymbols({
         tagName: 'symbol',
+        styling: {
+          fill: 1,
+        },
         elements: ['md-icon', 'custom-icon'],
       }),
     ],

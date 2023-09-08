@@ -43,7 +43,7 @@ class Icon extends HTMLElement {
           viewBox="0 -960 960 960"
         >
           <path
-            d="M220-180h150v-250h220v250h150v-390L480-765 220-570v390Zm-60 60v-480l320-240 320 240v480H530v-250H430v250H160Zm320-353Z"
+            d="M160-120v-480l320-240 320 240v480H560v-280H400v280H160Z"
           /></svg
       ></md-icon>
       ${this.iconTemplateTextContent}
