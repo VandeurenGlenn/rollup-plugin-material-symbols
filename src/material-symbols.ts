@@ -69,7 +69,8 @@ const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
 
   const variant = options.styling.variant.toLowerCase();
 
-  const root = `${env.npm_config_local_prefix}/node_modules/@material-symbols/svg-${options.styling.weight}`;
+  
+  const root = env.npm_config_local_prefix ? `${env.npm_config_local_prefix}/node_modules/@material-symbols/svg-${options.styling.weight}` : `node_modules/@material-symbols/svg-${options.styling.weight}`;
 
   const createPath = (root, symbol, fill) => {
     return join(
