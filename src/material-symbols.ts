@@ -8,7 +8,7 @@ import {createFilter} from '@rollup/pluginutils';
 import type {Plugin} from 'rollup';
 
 const createTagNameRegex = (tagName: string) =>
-  new RegExp(`(?:\\@${tagName}\\-)([aA-zZ]+)`, 'g');
+  new RegExp(`(?:\\@${tagName}\\-)([aA0-zZ9]+)(?=<)`, 'g');
 
 const injectSymbols = (
   content: string,
@@ -35,10 +35,7 @@ const injectSymbols = (
 const getSymbols = (content: string, options: MaterialSymbolsOptions) => {
   let matches = [];
   if (options.placeholderPrefix) {
-    const regex = new RegExp(
-      `(?:\\@${options.placeholderPrefix}\\-)([aA-zZ]+)`,
-      'g',
-    );
+    const regex = createTagNameRegex(options.placeholderPrefix);
     const _matches =
       content
         .match(regex)
@@ -69,8 +66,9 @@ const materialSymbolsSvg = (options: MaterialSymbolsOptions): Plugin => {
 
   const variant = options.styling.variant.toLowerCase();
 
-  
-  const root = env.npm_config_local_prefix ? `${env.npm_config_local_prefix}/node_modules/@material-symbols/svg-${options.styling.weight}` : `node_modules/@material-symbols/svg-${options.styling.weight}`;
+  const root = env.npm_config_local_prefix
+    ? `${env.npm_config_local_prefix}/node_modules/@material-symbols/svg-${options.styling.weight}`
+    : `node_modules/@material-symbols/svg-${options.styling.weight}`;
 
   const createPath = (root, symbol, fill) => {
     return join(
