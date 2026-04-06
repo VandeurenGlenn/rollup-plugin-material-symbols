@@ -1,31 +1,31 @@
 class Icon extends HTMLElement {
   get iconTemplateContent() {
     return document.querySelector(
-      `template[name="${this.innerHTML || this.getAttribute('icon')}"]`,
-    ).content;
+      `template[name="${this.innerHTML || this.getAttribute('icon')}"]`
+    ).content
   }
 
   get iconTemplateTextContent() {
-    return this.iconTemplateContent.cloneNode(true).children[0].outerHTML;
+    return this.iconTemplateContent.cloneNode(true).children[0].outerHTML
   }
 
   constructor() {
-    super();
-    this.attachShadow({mode: 'open'});
+    super()
+    this.attachShadow({mode: 'open'})
   }
 
   connectedCallback() {
-    super.connectedCallback && super.connectedCallback();
-    this.shadowRoot.innerHTML = this.render();
+    super.connectedCallback && super.connectedCallback()
+    this.shadowRoot.innerHTML = this.render()
   }
 
   render() {
     const html = (...strings) => {
       return strings.reduce(
         (set, value) => (set += value.join ? value.join('') : value),
-        '',
-      );
-    };
+        ''
+      )
+    }
     return html`
       <style>
         :host {
@@ -36,11 +36,12 @@ class Icon extends HTMLElement {
         }
       </style>
       <md-icon>home</md-icon>
+      <md-icon class="featured"> info </md-icon>
       ${this.iconTemplateTextContent}
-    `;
+    `
   }
 }
 
-customElements.define('test-icon', Icon);
+customElements.define('test-icon', Icon)
 
-export {Icon};
+export {Icon}

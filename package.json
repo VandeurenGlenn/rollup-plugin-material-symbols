@@ -3,11 +3,11 @@
   "version": "2.1.6",
   "description": "",
   "type": "module",
-  "main": "lib/material-symbols.js",
-  "module": "lib/material-symbols.js",
-  "types": "lib/material-symbols.d.ts",
+  "main": "exports/material-symbols.js",
+  "module": "exports/material-symbols.js",
+  "types": "exports/material-symbols.d.ts",
   "scripts": {
-    "build": "tsc --pretty",
+    "build": "rollup -c",
     "test": "cd test && rollup -c && cd ../",
     "prepare": "husky install"
   },
@@ -15,45 +15,44 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@material-symbols/svg-400": "^0.10.2",
-    "@rollup/plugin-typescript": "^11.1.2",
-    "@types/node": "^20.4.4",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0",
-    "rollup": "^3.26.3",
-    "tslib": "^2.6.0"
+    "@material-symbols/svg-400": "^0.44.0",
+    "@rollup/plugin-typescript": "^12.3.0",
+    "@types/node": "^25.5.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.1",
+    "rollup": "^4.60.1",
+    "tslib": "^2.8.1"
   },
   "exports": {
     ".": {
-      "import": "./lib/material-symbols.js",
-      "default": "./lib/material-symbols.js",
-      "types": "./lib/material-symbols.d.ts"
+      "import": "./exports/material-symbols.js",
+      "default": "./exports/material-symbols.js",
+      "types": "./exports/material-symbols.d.ts"
     },
     "./constants.js": {
-      "import": "./lib/constants.js",
-      "default": "./lib/constants.js",
-      "types": "./lib/constants.d.ts"
+      "import": "./exports/constants.js",
+      "default": "./exports/constants.js",
+      "types": "./exports/constants.d.ts"
     },
     "./material-symbols.js": {
-      "import": "./lib/material-symbols.js",
-      "default": "./lib/material-symbols.js",
-      "types": "./lib/material-symbols.d.ts"
+      "import": "./exports/material-symbols.js",
+      "default": "./exports/material-symbols.js",
+      "types": "./exports/material-symbols.d.ts"
     },
     "./types.js": {
-      "import": "./lib/types.js",
-      "default": "./lib/types.js",
-      "types": "./lib/types.d.ts"
+      "import": "./exports/types.js",
+      "default": "./exports/types.js",
+      "types": "./exports/types.d.ts"
     }
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.0.2",
-    "globby": "^13.2.2"
+    "@rollup/pluginutils": "^5.3.0"
   },
   "lint-staged": {
     "**/*.{cjs,html,js,json,md,ts}": "prettier --single-quote --no-bracket-spacing --write"
   },
   "files": [
-    "lib"
+    "exports"
   ]
 }

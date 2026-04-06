@@ -1,4 +1,4 @@
-import materialSymbols from './../lib/material-symbols.js';
+import materialSymbols from './../exports/material-symbols.js'
 
 export default [
   {
@@ -6,17 +6,17 @@ export default [
     output: [
       {
         dir: 'exports/svg',
-        format: 'es',
-      },
+        format: 'es'
+      }
     ],
     plugins: [
       materialSymbols({
         tagName: 'symbol',
         styling: {
-          fill: 1,
+          fill: 1
         },
-        elements: ['md-icon', 'custom-icon'],
-      }),
-    ],
-  },
-];
+        elements: ['md-icon', 'custom-icon']
+      })
+    ]
+  }
+]

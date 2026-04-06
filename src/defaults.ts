@@ -1,16 +1,24 @@
-import type {MaterialSymbolsOptions, StylingOptions} from './types.js';
+import type {MaterialSymbolsOptions, StylingOptions} from './types.js'
+
+type ResolvedMaterialSymbolsOptions = Omit<
+  Required<MaterialSymbolsOptions>,
+  'tagName'
+> & {
+  tagName?: string
+}
 
 export const baseStylingOptions: StylingOptions = {
   variant: 'outlined',
   size: 48,
   weight: 400,
   fill: 0,
-  grade: 0,
-};
+  grade: 0
+}
 
-export const baseOptions: Partial<MaterialSymbolsOptions> = {
+export const baseOptions: ResolvedMaterialSymbolsOptions = {
   include: ['**/*.{js,ts,html}'],
   exclude: [],
   styling: baseStylingOptions,
-  placeholderPrefix: '@md_symbol_',
-};
+  placeholderPrefix: 'md_symbol',
+  elements: []
+}
